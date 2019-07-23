@@ -1,5 +1,7 @@
 <?php
 
+define('BASE', '/');
+
 $db['host'] = getenv('DB_HOST');
 $db['user'] = getenv('DB_USER');
 $db['pass'] = getenv('DB_PASSWORD');
