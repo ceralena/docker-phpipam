@@ -24,6 +24,6 @@ you stop and start containers.
 
 # Updating Vendored Code
 
-Use this command to pull a version of `phpipam` (check its [GitHub releases](https://github.com/phpipam/phpipam/releases):
+Use this command to pull a version of `phpipam` (check its [GitHub releases](https://github.com/phpipam/phpipam/releases)):
 
     git subtree pull --squash --prefix vendor/phpipam https://github.com/phpipam/phpipam.git 1.4
