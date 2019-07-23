@@ -1,0 +1,22 @@
+#!/bin/bash -eu
+
+echo 'initializing the database'
+# Create ~/.my.cnf to configure mysql client.
+cat > ~/.my.cnf <<EOF
+[client]
+host=${DB_HOST}
+user=root
+password=${MYSQL_ROOT_PASSWORD}
+EOF
+
+# Wait for mysql to be ready.
+wait-for-socket --description mysql --address ${DB_HOST} --port 3306
+
+# Check for the database. Create it if it does not exist.
+if ! mysql <<<"show databases;" | grep "phpipam" >/dev/null; then
+  echo 'phpipam database not found - creating it'
+  mysql <<<"create database phpipam;"
+  mysql <<<"GRANT ALL ON phpipam.* TO phpipam@'%' identified by 'phpipamadmin'"
+
+  mysql phpipam < /var/www/phpipam/db/SCHEMA.sql
+fi

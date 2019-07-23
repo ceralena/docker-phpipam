@@ -1,0 +1,5 @@
+#1/bin/bash -eu
+
+echo 'running apache2'
+
+/usr/sbin/apachectl -DFOREGROUND

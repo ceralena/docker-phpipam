@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  db:
+    image: mariadb:10.4.6-bionic
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: oop3iaBa
+    volumes:
+      - mariadb-data-dir:/var/lib/mysql
+
+  web:
+    build:
+      context: .
+      target: base
+    command: /app/bin/run-apache
+    working_dir: /app
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - ./phpipam:/var/www/phpipam
+      - ./conf/config.php:/var/www/phpipam/config.php
+    environment:
+      MYSQL_ROOT_PASSWORD: oop3iaBa
+
+      DB_HOST: db
+      DB_USER: phpipam
+      DB_PASSWORD: phpipamadmin
+      DB_NAME: phpipam
+
+      GMAPS_API_KEY: ${GMAPS_API_KEY}
+    entrypoint: /app/bin/entrypoint
+    ports:
+      - "8080:80"
+
+volumes:
+  mariadb-data-dir: ~
