@@ -9,6 +9,11 @@ services:
     volumes:
       - mariadb-data-dir:/var/lib/mysql
 
+  redis:
+    image: redis:5.0.5
+    volumes:
+      - redis-data-dir:/data
+
   web:
     build:
       context: .
@@ -17,12 +22,14 @@ services:
     working_dir: /app
     depends_on:
       - db
+      - redis
     volumes:
       - .:/app
       - ./vendor/phpipam:/var/www/phpipam
       - ./conf/config.php:/var/www/phpipam/config.php
       - ./conf/000-phpipam.conf:/etc/apache2/sites-enabled/000-phpipam.conf
       - ./conf/99-php-error-log.ini:/etc/php/7.3/apache2/conf.d/99-error-log.ini
+      - ./conf/99-php-redis-sessions.ini:/etc/php/7.3/apache2/conf.d/99-redis-session.ini
     environment:
       MYSQL_ROOT_PASSWORD: oop3iaBa
 
@@ -38,3 +45,4 @@ services:
 
 volumes:
   mariadb-data-dir: ~
+  redis-data-dir: ~

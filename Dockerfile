@@ -8,6 +8,7 @@ RUN apt-get install -y \
   apt-utils \
   mariadb-client \
   vim \
+  php-redis \
   php-pear \
   php7.3 \
   php7.3-curl \
