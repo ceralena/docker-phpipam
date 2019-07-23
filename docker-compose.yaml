@@ -19,7 +19,7 @@ services:
       - db
     volumes:
       - .:/app
-      - ./phpipam:/var/www/phpipam
+      - ./vendor/phpipam:/var/www/phpipam
       - ./conf/config.php:/var/www/phpipam/config.php
     environment:
       MYSQL_ROOT_PASSWORD: oop3iaBa
