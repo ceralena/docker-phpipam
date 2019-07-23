@@ -1,8 +1,7 @@
 # phpipam
 
 This is a repository containing configuration to deploy and configure
-[phpipam](https://phpipam.net) in docker, using `docker-compose`, with a local
-MariaDB database.
+[phpipam](https://phpipam.net) in docker, using [docker-compose](https://docs.docker.com/compose/compose-file/), with a local MariaDB database.
 
 To run locally:
 
