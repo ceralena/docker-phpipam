@@ -5,7 +5,7 @@ services:
     image: mariadb:10.4.6-bionic
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: oop3iaBa
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - mariadb-data-dir:/var/lib/mysql
 
@@ -31,7 +31,7 @@ services:
       - ./conf/99-php-error-log.ini:/etc/php/7.3/apache2/conf.d/99-error-log.ini
       - ./conf/99-php-redis-sessions.ini:/etc/php/7.3/apache2/conf.d/99-redis-session.ini
     environment:
-      MYSQL_ROOT_PASSWORD: oop3iaBa
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
 
       DB_HOST: db
       DB_USER: phpipam

@@ -8,6 +8,7 @@ This is a repository containing configuration to deploy and configure
 You must expose these environment variables:
 
 * `GMAPS_API_KEY`: a Google Maps API key
+* `MYSQL_ROOT_PASSWORD`: a random password
 
 ## Running Locally
 
