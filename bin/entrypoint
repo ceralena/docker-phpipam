@@ -3,14 +3,9 @@
 # initialize the database
 /app/bin/initialize-db
 
-# enable the apache site
+# disable the default apache site
 if test -f /etc/apache2/sites-enabled/000-default.conf; then
   rm /etc/apache2/sites-enabled/000-default.conf
 fi
-
-ln -sf /app/conf/000-phpipam.conf /etc/apache2/sites-enabled/000-phpipam.conf
-
-# configure php error log
-ln -sf /app/conf/99-php-error-log.ini /etc/php/7.3/apache2/conf.d/99-error-log.ini
 
 exec "${@-bash}"

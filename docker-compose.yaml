@@ -21,6 +21,8 @@ services:
       - .:/app
       - ./vendor/phpipam:/var/www/phpipam
       - ./conf/config.php:/var/www/phpipam/config.php
+      - ./conf/000-phpipam.conf:/etc/apache2/sites-enabled/000-phpipam.conf
+      - ./conf/99-php-error-log.ini:/etc/php/7.3/apache2/conf.d/99-error-log.ini
     environment:
       MYSQL_ROOT_PASSWORD: oop3iaBa
 
